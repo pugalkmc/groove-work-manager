@@ -44,6 +44,11 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  bio: {
+    type: String,
+    required: false,
+    default: ''
+  },
   status: {
     type: Boolean,
     default: true

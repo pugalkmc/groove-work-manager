@@ -1,0 +1,148 @@
+.skills-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .skills-title {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .add-skill-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .input-skill {
+    width: 75%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-btn:hover {
+    background-color: #218838;
+  }
+  
+  .skill-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .skill-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .skill-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .skill-actions button {
+    margin-left: 10px;
+  }
+  
+  .edit-btn,
+  .delete-btn,
+  .save-btn,
+  .cancel-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .save-btn {
+    background-color: #28a745;
+  }
+  
+  .save-btn:hover {
+    background-color: #218838;
+  }
+  
+  .cancel-btn {
+    background-color: #6c757d;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #5a6268;
+  }
+  
+  .edit-skill-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  input.input-skill {
+    margin-right: 10px;
+    flex-grow: 1;
+  }
+
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+  /* Skills.css */
+.dropdown-skills {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+    margin-top: 50px; /* Remove margin */
+    border: 1px solid #ccc; /* Add a border to the dropdown */
+    background-color: white; /* Set background color */
+    z-index: 1000; /* Ensure the dropdown is above other elements */
+    width: 100%; /* Match the width of the input box */
+    max-height: 200px; /* Set a max height for the dropdown */
+    overflow-y: auto; /* Add scroll if items exceed max height */
+  }
+  
+  /* Style each dropdown item */
+  .dropdown-item {
+    padding: 8px 12px; /* Add padding */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+  }
+  
+  
+  

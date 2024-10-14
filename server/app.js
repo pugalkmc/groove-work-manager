@@ -69,7 +69,7 @@ app.options('*', (req, res) => {
 // Register endpoint
 app.post('/api/register', register);
 app.post('/api/login', login);
-app.get('/verify/:token', verifyAccount);
+app.get('/activate/:token', verifyAccount);
 // app.use('/api/feedback', feedbackRoutes);
 
 app.use(authMiddleware);

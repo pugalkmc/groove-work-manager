@@ -12,7 +12,7 @@ const Register = () => {
     const validate = async () => {
       const token = localStorage.getItem('token');
       if (token) {
-        navigate('/console');
+        navigate('/');
       }
     };
 
@@ -48,6 +48,7 @@ const Register = () => {
       const response = await axiosInstance.post('/api/register', { name, email, password, phoneNumber });
 
       if (response.status === 200) {
+        alert("The email address you supplied has received an activation link; make sure to also check your spam folder.")
         navigate('/login');
       } else {
         setError(response.data.error);
@@ -90,7 +91,7 @@ const Register = () => {
               className="mt-4"
             ></div>
             <div className="mt-4 empower-text">
-              Get Started your earning journey with us!
+              Get Started your journey with us!
             </div>
           </div>
           <div className="col-sm-12 col-md-6">

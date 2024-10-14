@@ -11,7 +11,7 @@ const Login = () => {
     const validate = async () => {
       const token = localStorage.getItem('token');
       if (token) {
-        navigate('/console');
+        navigate('/');
       }
     };
 
@@ -33,7 +33,7 @@ const Login = () => {
       // Check the status code
       if (response.status === 200) {
         localStorage.setItem('token', response.data.token)
-        navigate('/console');
+        navigate('/');
       } else {
         setError(response.data.error);
       }
@@ -71,7 +71,7 @@ const Login = () => {
               className="mt-4"
             ></div>
             <div className="mt-4 empower-text">
-            Get Started your earning journey with us!
+            Get Started your journey with us!
             </div>
           </div>
           <div className="col-sm-12 col-md-6">

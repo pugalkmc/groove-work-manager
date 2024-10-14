@@ -10,7 +10,7 @@ const router = express.Router();
 // Add a skill to the user
 router.post('/skills', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
     if (!user) return res.status(404).send('User not found');
     
     user.skills.push(req.body.skill);
@@ -24,7 +24,7 @@ router.post('/skills', async (req, res) => {
 // Edit a skill of the user
 router.put('/skills/:skillIndex', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
     if (!user) return res.status(404).send('User not found');
 
     const { newSkill } = req.body;
@@ -45,7 +45,7 @@ router.put('/skills/:skillIndex', async (req, res) => {
 // Delete a skill of the user
 router.delete('/skills/:skillIndex', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
     if (!user) return res.status(404).send('User not found');
 
     const skillIndex = req.params.skillIndex;
@@ -61,11 +61,31 @@ router.delete('/skills/:skillIndex', async (req, res) => {
   }
 });
 
+
+// Get all skills API
+router.get('/skills/all', async (req, res) => {
+  try {
+    const users = await User.find({}, 'skills');
+    const allSkills = new Set();
+
+    users.forEach(user => {
+      user.skills.forEach(skill => allSkills.add(skill));
+    });
+
+    // console.log(allSkills);
+    res.json(Array.from(allSkills)); // Return unique skills as an array
+  } catch (error) {
+    console.error('Error fetching all unique skills:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 // Get user's skills
 router.get('/skills', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('skills');
-    if (!user) return res.status(404).send('User not found');
+    const user = await User.findById(req.user._id).select('skills');
+    if (!user) return res.status(200).send('User not found');
     
     res.status(200).send(user.skills);
   } catch (error) {
@@ -76,8 +96,8 @@ router.get('/skills', async (req, res) => {
 // Get user profile without skills
 router.get('/profile', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-skills -password'); // Exclude skills and password
-    if (!user) return res.status(404).send('User not found');
+    const user = await User.findById(req.user._id).select('-skills -password'); // Exclude skills and password
+    if (!user) return res.status(401).send('User not found');
     
     res.status(200).send(user);
   } catch (error) {
@@ -85,29 +105,17 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-// Edit user's phone number
-router.put('/phoneNumber', async (req, res) => {
+
+router.put('/profile', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
-    if (!user) return res.status(404).send('User not found');
+    const user = await User.findById(req.user._id).select('-skills -password'); // Exclude skills and password
+    if (!user) return res.status(401).send('User not found');
     
     user.phoneNumber = req.body.phoneNumber;
-    await user.save();
-    res.status(200).send('Phone number updated successfully');
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
-
-// Edit user's name
-router.put('/name', async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id);
-    if (!user) return res.status(404).send('User not found');
-
     user.name = req.body.name;
+    user.bio = req.body.bio;
     await user.save();
-    res.status(200).send('Name updated successfully');
+    res.status(200).send('Profile updated successfully');
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -116,7 +124,7 @@ router.put('/name', async (req, res) => {
 // Edit user's password
 router.put('/password', async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
     if (!user) return res.status(404).send('User not found');
 
     const { oldPassword, newPassword } = req.body;
@@ -147,7 +155,7 @@ router.post('/forgot-password', async (req, res) => {
     // Optionally, store this token in DB with an expiration date or send it via email.
     // Example: user.resetToken = resetToken; await user.save();
 
-    res.status(200).send(`Reset token (simulate sending via email): ${resetToken}`);
+    res.status(200).send("This option is currently unavailable");
   } catch (error) {
     res.status(500).send(error.message);
   }

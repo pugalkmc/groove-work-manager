@@ -1,0 +1,21 @@
+.container {
+    max-width: 800px;
+  }
+  
+  .card {
+    border-radius: 10px;
+  }
+  
+  h2, h4 {
+    color: #343a40;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
+  input[disabled], textarea[disabled] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+  

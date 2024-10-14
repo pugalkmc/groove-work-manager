@@ -6,8 +6,8 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    if (location.pathname === '/console'){
-      navigate('/console/project');
+    if (location.pathname === ''){
+      navigate('/');
     }
   })
 
@@ -45,13 +45,13 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link className="nav-link w-100 h-100" to={"/console"}>
+              <Link className="nav-link w-100 h-100 text-bold" to={"/skills"}>
                 Skills
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link w-100 h-100" to={"/console/account"}>
-                Account
+              <Link className="nav-link w-100 h-100 text-bold" to={"/profile"}>
+                My Profile
               </Link>
             </li>
           </ul>
